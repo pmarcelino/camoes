@@ -76,7 +76,7 @@ def process_essay_answer_language_classification(folder_path):
             print(file_name + ": " + "Done!")
     
     # Save tests results to a text file
-    test_results_path = os.path.join('./', 'essay_language_classification_tests_results.txt')
+    test_results_path = os.path.join('./', 'essay_language_classification_tests_results.log')
     save_string_to_txt_file(test_results_path, '\n'.join(tests_results))
     print('Tests run successful. Check report at', test_results_path)
     
