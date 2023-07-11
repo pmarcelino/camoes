@@ -1,5 +1,6 @@
 import os
 import PyPDF2
+import re
 
 def convert_pdf_files_to_text(raw_path):
     """
@@ -40,18 +41,24 @@ def extract_text_between_keywords_in_files(processed_path):
         None
     """
     start_keyword = 'GRUPO III'
-    end_keyword = 'FIM'
+    end_keyword_pattern = r'(Fi[mM]|FIM|Fim)'
     target_keyword = 'exam'
     
     for file_name in os.listdir(processed_path):
-        if target_keyword in file_name.lower() and file_name.endswith('.txt'):
+        if target_keyword in file_name.lower() and file_name.endswith('exam.txt'):
             input_file = os.path.join(processed_path, file_name)
             output_file = os.path.join(processed_path, file_name.replace('.txt', '_essay_question.txt'))
 
             with open(input_file, 'r', encoding='utf-8') as input_txt, open(output_file, 'w', encoding='utf-8') as output_txt:
                 content = input_txt.read()
+                
                 start_index = content.find(start_keyword)
-                end_index = content.find(end_keyword)
+                end_match = re.search(end_keyword_pattern, content)
+                if end_match:
+                    end_keyword = end_match.group()
+                    end_index = content.find(end_keyword, start_index + len(start_keyword))
+                else:
+                    end_index = -1
 
                 if start_index != -1 and end_index != -1:
                     extracted_text = content[start_index + len(start_keyword):end_index].strip()
