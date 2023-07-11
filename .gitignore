@@ -1,0 +1,72 @@
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# It's generally better to unpack these files and commit the raw source
+# git has its own built-in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# Operating System generated files #
+####################################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE specific files #
+######################
+.vscode/
+.idea/
+
+# Python specific files #
+########################
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyz
+*.pyw
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+
+# Environment files #
+#####################
+.env
+.env.local
+.env.*.local
+.env.build
+.env.deploy
+.env.production
+.env.test
+.env.development
+.env.example
+venv/
+
+# Docs #
+#####################
+NOTES.md
